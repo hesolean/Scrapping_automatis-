@@ -9,7 +9,7 @@ class AllomoviesSpider(scrapy.Spider):
 
     def parse(self, response):
         # liste des éléments à scraper
-        movies = response.xpath(".//li[@class='mdl']")
+        movies = response.xpath(".//li[@class='mdl']")[:1]
 
         # je mape sur la liste des films
         for movie in movies:

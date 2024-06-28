@@ -9,7 +9,7 @@ from itemadapter import ItemAdapter
 import re
 
 from .database import SessionLocal
-from .models import Gender, Language, Media, Person, Serie
+from .models import Gender, Media, Person
 
 class WeeklymoviesscraperPipeline:
     def process_item(self, item, spider):
@@ -19,6 +19,7 @@ class WeeklymoviesscraperPipeline:
         item = self.cleaning_exit_date(item)
         item = self.cleaning_presse_score(item)
         item = self.cleaning_viewer_score(item)
+        item = self.cleaning_exit_date(item)
 
         return item
     
@@ -72,9 +73,12 @@ class WeeklymoviesscraperPipeline:
         # je garde les éléments dans les parenthèses
         motif = r'\d+'
         numbers = re.findall(motif, sessions)
-
-        # Concaténer les chiffres avec un espace comme séparateur
-        cleaned_sessions = ' '.join(numbers)
+        # Vérifier si numbers n'est pas vide
+        if numbers:
+            # Concaténer les chiffres avec un espace comme séparateur
+            cleaned_sessions = int(''.join(numbers))
+        else:
+            cleaned_sessions = None
         adapter['sessions'] = cleaned_sessions
         return item
     
@@ -92,7 +96,8 @@ class WeeklymoviesscraperPipeline:
         presse_score = adapter.get('presse_score')
 
         # je ne garde que le premier élément
-        cleaned_presse_score = presse_score[0]
+        presse_score_float = presse_score[0]
+        cleaned_presse_score = float(presse_score_float.replace(',', '.'))
         adapter['presse_score'] = cleaned_presse_score
         return item
     
@@ -101,8 +106,29 @@ class WeeklymoviesscraperPipeline:
         viewer_score = adapter.get('viewer_score')
 
         # je ne garde que le premier élément
-        cleaned_viewer_score = viewer_score[2]
+        viewer_score_float = viewer_score[2]
+        cleaned_viewer_score = float(viewer_score_float.replace(',', '.'))
         adapter['viewer_score'] = cleaned_viewer_score
+        return item
+
+    def cleaning_exit_date(self, item):
+        adapter = ItemAdapter(item)
+        exit_date = adapter.get('exit_date')
+        
+        # Convertir une date française en format '28 juin 2024' en 'YYYY-MM-DD'
+        french_months = {
+            'janvier': '01', 'février': '02', 'mars': '03', 'avril': '04',
+            'mai': '05', 'juin': '06', 'juillet': '07', 'août': '08',
+            'septembre': '09', 'octobre': '10', 'novembre': '11', 'décembre': '12'
+        }
+
+        # Extraction du jour, mois et année
+        day, mois, year = exit_date.split()
+        month = french_months[mois.lower()]
+
+        # Formatage en YYYY-MM-DD
+        formatted_date = f'{year}-{month}-{day}'
+        adapter['exit_date'] = formatted_date
         return item
 
 class DatabasePipeline:

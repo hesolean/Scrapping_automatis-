@@ -17,10 +17,10 @@ az group create \
 # Créez une instance de serveur flexible 
 az postgres flexible-server create \
     --name $SERVER_NAME \
-    --resource-group $RESOURCE_GROUP\
-    --admin-password $ADMIN_PASSWORD\
-    --admin-user $ADMIN_USER\
-    --sku-name Standard_B1ms\
+    --resource-group $RESOURCE_GROUP \
+    --admin-password $ADMIN_PASSWORD \
+    --admin-user $ADMIN_USER \
+    --sku-name Standard_D2s_v3 \
     --database-name "movies"
 
 # Récupérer l'URL du serveur et attendre de l'avoir pour passer à la suite
