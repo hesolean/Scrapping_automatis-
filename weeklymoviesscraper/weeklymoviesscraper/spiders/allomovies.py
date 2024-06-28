@@ -36,6 +36,7 @@ class AllomoviesSpider(scrapy.Spider):
         item['language'] = response.xpath(".//section[@class='section ovw ovw-technical']//span[@class='what light' and text()='Langues']/following-sibling::span/text()").get()
         item['distributor'] = response.xpath(".//section[@class='section ovw ovw-technical']//span[@class='what light' and text()='Distributeur']/following-sibling::span/text()").get()
         item['product_year'] = response.xpath(".//section[@class='section ovw ovw-technical']//span[@class='what light' and text()='Année de production']/following-sibling::span/text()").get()
-        item['movie_type'] = response.xpath(".//section[@class='section ovw ovw-technical']//span[@class='what light' and text()='Type de film']/following-sibling::span/text()").get()
+        item['media_type'] = response.xpath(".//section[@class='section ovw ovw-technical']//span[@class='what light' and text()='Type de film']/following-sibling::span/text()").get()
+        item['visa'] = response.xpath(".//section[@class='section ovw ovw-technical']//span[@class='what light' and text()='N° de Visa']/following-sibling::span/text()").get()
 
         yield item

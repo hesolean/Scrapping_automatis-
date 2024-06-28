@@ -23,4 +23,5 @@ class WeeklymoviesscraperItem(scrapy.Item):
     language = scrapy.Field()
     distributor = scrapy.Field()
     product_year = scrapy.Field()
-    movie_type = scrapy.Field()
+    media_type = scrapy.Field()
+    visa = scrapy.Field()
