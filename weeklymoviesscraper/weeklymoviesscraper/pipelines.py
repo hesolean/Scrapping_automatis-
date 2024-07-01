@@ -5,7 +5,10 @@
 
 
 # useful for handling different item types with a single interface
+<<<<<<< HEAD
 from datetime import datetime
+=======
+>>>>>>> b245534bfed11dc88b4ebfe0ff5d54e4d4c8ae58
 from itemadapter import ItemAdapter
 import re
 
@@ -17,12 +20,19 @@ class WeeklymoviesscraperPipeline:
         item = self.cleaning_director(item)
         item = self.cleaning_duration(item)
         item = self.cleaning_sessions(item)
+<<<<<<< HEAD
         item = self.cleaning_presse_score(item)
         item = self.cleaning_viewer_score(item)
         item = self.cleaning_exit_date(item)
         item = self.cleaning_language(item)
 
         item = self.cleaning_visa(item)
+=======
+        item = self.cleaning_exit_date(item)
+        item = self.cleaning_presse_score(item)
+        item = self.cleaning_viewer_score(item)
+        item = self.cleaning_exit_date(item)
+>>>>>>> b245534bfed11dc88b4ebfe0ff5d54e4d4c8ae58
 
         return item
     
@@ -73,6 +83,7 @@ class WeeklymoviesscraperPipeline:
         adapter = ItemAdapter(item)
         sessions = adapter.get('sessions')
 
+<<<<<<< HEAD
         # je gère le none de sessions
         if sessions == None:
             cleaned_sessions = 0
@@ -90,10 +101,34 @@ class WeeklymoviesscraperPipeline:
         adapter['sessions'] = cleaned_sessions
         return item
     
+=======
+        # je garde les éléments dans les parenthèses
+        motif = r'\d+'
+        numbers = re.findall(motif, sessions)
+        # Vérifier si numbers n'est pas vide
+        if numbers:
+            # Concaténer les chiffres avec un espace comme séparateur
+            cleaned_sessions = int(''.join(numbers))
+        else:
+            cleaned_sessions = None
+        adapter['sessions'] = cleaned_sessions
+        return item
+    
+    def cleaning_exit_date(self, item):
+        adapter = ItemAdapter(item)
+        exit_date = adapter.get('exit_date')
+
+        # je ne garde que le premier élément
+        cleaned_exit_date = exit_date[0].strip()
+        adapter['exit_date'] = cleaned_exit_date
+        return item
+    
+>>>>>>> b245534bfed11dc88b4ebfe0ff5d54e4d4c8ae58
     def cleaning_presse_score(self, item):
         adapter = ItemAdapter(item)
         presse_score = adapter.get('presse_score')
 
+<<<<<<< HEAD
         # je gère les résultats non trouvés
         if presse_score == []:
             cleaned_presse_score = 0
@@ -101,6 +136,11 @@ class WeeklymoviesscraperPipeline:
             # je ne garde que le premier élément
             presse_score_float = presse_score[0]
             cleaned_presse_score = float(presse_score_float.replace(',', '.'))
+=======
+        # je ne garde que le premier élément
+        presse_score_float = presse_score[0]
+        cleaned_presse_score = float(presse_score_float.replace(',', '.'))
+>>>>>>> b245534bfed11dc88b4ebfe0ff5d54e4d4c8ae58
         adapter['presse_score'] = cleaned_presse_score
         return item
     
@@ -108,6 +148,7 @@ class WeeklymoviesscraperPipeline:
         adapter = ItemAdapter(item)
         viewer_score = adapter.get('viewer_score')
 
+<<<<<<< HEAD
         # je gère les tableaux vides
         if viewer_score == []:
             cleaned_viewer_score = 0.0
@@ -119,12 +160,18 @@ class WeeklymoviesscraperPipeline:
                 cleaned_viewer_score = 0.0
             else:
                 cleaned_viewer_score = float(viewer_score_float.replace(',', '.'))
+=======
+        # je ne garde que le premier élément
+        viewer_score_float = viewer_score[2]
+        cleaned_viewer_score = float(viewer_score_float.replace(',', '.'))
+>>>>>>> b245534bfed11dc88b4ebfe0ff5d54e4d4c8ae58
         adapter['viewer_score'] = cleaned_viewer_score
         return item
 
     def cleaning_exit_date(self, item):
         adapter = ItemAdapter(item)
         exit_date = adapter.get('exit_date')
+<<<<<<< HEAD
 
         # je retire les \n
         cleaned_exit_date = exit_date.strip()
@@ -150,6 +197,23 @@ class WeeklymoviesscraperPipeline:
         if visa == "-":
             visa = 0
         adapter['visa'] = visa
+=======
+        
+        # Convertir une date française en format '28 juin 2024' en 'YYYY-MM-DD'
+        french_months = {
+            'janvier': '01', 'février': '02', 'mars': '03', 'avril': '04',
+            'mai': '05', 'juin': '06', 'juillet': '07', 'août': '08',
+            'septembre': '09', 'octobre': '10', 'novembre': '11', 'décembre': '12'
+        }
+
+        # Extraction du jour, mois et année
+        day, mois, year = exit_date.split()
+        month = french_months[mois.lower()]
+
+        # Formatage en YYYY-MM-DD
+        formatted_date = f'{year}-{month}-{day}'
+        adapter['exit_date'] = formatted_date
+>>>>>>> b245534bfed11dc88b4ebfe0ff5d54e4d4c8ae58
         return item
 
 class DatabasePipeline:

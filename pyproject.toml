@@ -6,10 +6,16 @@ authors = ["lnd"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
+<<<<<<< HEAD
 python = "^3.10"
 scrapy = "^2.11.2"
 python-dotenv = "^1.0.1"
 sqlalchemy = "^2.0.31"
+=======
+python = "^3.11"
+scrapy = "^2.11.2"
+python-dotenv = "^1.0.1"
+>>>>>>> b245534bfed11dc88b4ebfe0ff5d54e4d4c8ae58
 
 
 [build-system]

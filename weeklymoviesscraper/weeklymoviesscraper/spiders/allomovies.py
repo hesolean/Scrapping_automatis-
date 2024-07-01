@@ -9,7 +9,11 @@ class AllomoviesSpider(scrapy.Spider):
 
     def parse(self, response):
         # liste des éléments à scraper
+<<<<<<< HEAD
         movies = response.xpath(".//li[@class='mdl']")
+=======
+        movies = response.xpath(".//li[@class='mdl']")[:1]
+>>>>>>> b245534bfed11dc88b4ebfe0ff5d54e4d4c8ae58
 
         # je mape sur la liste des films
         for movie in movies:
@@ -26,7 +30,11 @@ class AllomoviesSpider(scrapy.Spider):
         item['viewer_score'] = response.xpath(".//div[@class='rating-item']/div/div/span/text()").getall()
         item['sessions'] = response.xpath(".//div[@class='buttons-holder']/span/span/text()").get()
         item['gender'] = response.xpath(".//div[@class='meta-body-item meta-body-info']/span[@class='spacer'][2]/following-sibling::span/text()").getall()
+<<<<<<< HEAD
         item['exit_date'] = response.xpath(".//div[@class='meta-body-item meta-body-info']/span/text()").get()
+=======
+        item['exit_date'] = response.xpath(".//div[@class='meta-body-item meta-body-info']/span/text()").getall()
+>>>>>>> b245534bfed11dc88b4ebfe0ff5d54e4d4c8ae58
         item['duration'] = response.xpath("//div[@class='meta-body-item meta-body-info']/text()").getall()
         item['synopsis'] = response.xpath(".//section[@id='synopsis-details']/div[@class='content-txt ']/p/text()").get()
         item['actors'] = response.xpath(".//section[@class='section ovw']//div[@class='gd gd-gap-20 gd-xs-2 gd-s-4']//a/text()").getall()

@@ -315,6 +315,7 @@ testing = ["covdefaults (>=2.3)", "coverage (>=7.3.2)", "diff-cover (>=8.0.1)", 
 typing = ["typing-extensions (>=4.8)"]
 
 [[package]]
+<<<<<<< HEAD
 name = "greenlet"
 version = "3.0.3"
 description = "Lightweight in-process concurrent programming"
@@ -386,6 +387,8 @@ docs = ["Sphinx", "furo"]
 test = ["objgraph", "psutil"]
 
 [[package]]
+=======
+>>>>>>> b245534bfed11dc88b4ebfe0ff5d54e4d4c8ae58
 name = "hyperlink"
 version = "21.0.0"
 description = "A featureful, immutable, and correct URL for Python."
@@ -883,6 +886,7 @@ files = [
 ]
 
 [[package]]
+<<<<<<< HEAD
 name = "sqlalchemy"
 version = "2.0.31"
 description = "Database Abstraction Library"
@@ -970,6 +974,8 @@ pymysql = ["pymysql"]
 sqlcipher = ["sqlcipher3_binary"]
 
 [[package]]
+=======
+>>>>>>> b245534bfed11dc88b4ebfe0ff5d54e4d4c8ae58
 name = "tldextract"
 version = "5.1.2"
 description = "Accurately separates a URL's subdomain, domain, and public suffix, using the Public Suffix List (PSL). By default, this includes the public ICANN TLDs and their exceptions. You can optionally support the Public Suffix List's private domains as well."
@@ -1148,5 +1154,10 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 
 [metadata]
 lock-version = "2.0"
+<<<<<<< HEAD
 python-versions = "^3.10"
 content-hash = "f9d335cc04bd4dc85ce05dd75f4ea97f88c0740393cff272485a4509cb72532f"
+=======
+python-versions = "^3.11"
+content-hash = "3a1fa9489ba5840928dbc4d58735ab8acecd9995e1351047af73cd0dbeff8964"
+>>>>>>> b245534bfed11dc88b4ebfe0ff5d54e4d4c8ae58
