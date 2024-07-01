@@ -1,0 +1,9 @@
+{
+    "name": "AzureStorageLinkedService",
+    "properties": {
+        "type": "AzureBlobStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=$CONTAINER_NAME;AccountKey=$STORAGE_KEY;EndpointSuffix=core.windows.net"
+        }
+    }
+}
