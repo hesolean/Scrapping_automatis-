@@ -23,11 +23,7 @@ class Media(Base):
     presse_score = Column(Float)
     viewer_score = Column(Float)
     sessions = Column(Integer)
-<<<<<<< HEAD
     exit_date = Column(String(255))
-=======
-    exit_date = Column(Date)
->>>>>>> b245534bfed11dc88b4ebfe0ff5d54e4d4c8ae58
     duration = Column(Integer)
     synopsis = Column(TEXT)
     public = Column(String(255))
