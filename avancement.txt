@@ -1,6 +1,0 @@
-create_postgres.sh -> crée une ressource, un serveur flexible, un conteneur blob, un datafactory
-
-Reste à faire :
-faire les liens entre datafactory, stockage et postgres
-create_trigger
-enregistrer le csv dans le conteneur blob pour données de secours si bug avec SQL
