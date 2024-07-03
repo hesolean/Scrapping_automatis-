@@ -65,7 +65,7 @@ DEFAULT_REQUEST_HEADERS = {
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    "weeklymoviesscraper.pipelines.WeeklymoviesscraperPipeline": 200,
-   "weeklymoviesscraper.pipelines.DatabasePipeline": 300,
+   # "weeklymoviesscraper.pipelines.DatabasePipeline": 300,
 
 }
 

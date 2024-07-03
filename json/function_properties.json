@@ -6,7 +6,7 @@
         "authentication": "Anonymous",
         "functionKey": {
             "type": "SecureString",
-            "value": "$FUNCTION_KEY"
+            "value": "zcTwM7lPbbr3typDx5pWZYL1PRdPhhBmS9wx_UdcVIe7AzFusRFDlQ=="
         }
     }   
 }
