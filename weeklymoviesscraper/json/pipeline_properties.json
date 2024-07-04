@@ -13,7 +13,7 @@
             },
             "userProperties": [],
             "typeProperties": {
-                "functionName": "myhttptrigger",
+                "functionName": "MyHttpTrigger",
                 "headers": {},
                 "method": "GET"
             },
