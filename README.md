@@ -28,11 +28,7 @@ Avant de lancer le script, assurez-vous d'avoir installé les outils suivants :
     chmod +x 1_create_postgres.sh
     ./1_create_postgres.sh
 
-4. Lancer le scrapping directement
-
-    pour lancer le scraping manuellement et stocker les données dans la base de données azure, aller dans le fichier settings.py et décommenter la ligne 68 :    # "weeklymoviesscraper.pipelines.DatabasePipeline": 300,
-
-5. Lancer la commande de scraping
+4. Lancer la commande de scraping
 
     pour lancer uniquement le scraping vers la bdd :
     scrapy crawl allomovies
@@ -62,3 +58,8 @@ Avant de lancer le script, assurez-vous d'avoir installé les outils suivants :
 
     chmod +x 4_datafactory.sh
     ./4_datafactory.sh
+
+6. Lancer la fonction
+
+    se mettre dans le bon répertoire et lancer la commande dans le terminal :
+    func start
