@@ -54,6 +54,11 @@ az datafactory pipeline create \
     --name $PIPELINE_NAME \
     --resource-group $RESOURCE_GROUP
 
+# Vérifier la création du Pipeline
+az datafactory pipeline show \
+    --resource-group $RESOURCE_GROUP \
+    --factory-name $DATAFACT_NAME \
+    --name $PIPELINE_NAME
 
 # ___TRIGGER___
 
@@ -69,6 +74,12 @@ az datafactory trigger create \
     --properties "$TriggerContent" \
     --name $TriggerName \
     --resource-group $RESOURCE_GROUP
+
+# Vérifier la création du Trigger
+az datafactory trigger show \
+    --resource-group $RESOURCE_GROUP \
+    --factory-name $DATAFACT_NAME \
+    --name $TriggerName
 
 # Démarrer le trigger
 az datafactory trigger start \

@@ -9,7 +9,7 @@ set +o allexport
 VM_SIZE="STANDARD_A1_v2"
 NODE_COUNT=2
 IMAGE="UbuntuServer"
-IMAGE_VERSION="18.04-LTS"
+IMAGE_VERSION="20_04-LTS"
 NODE_AGENT_SKU_ID="batch.node.ubuntu 18.04"
 
 # Créer un compte Batch
